@@ -1,22 +1,22 @@
-// sw.js - Service Worker para Mknails 
+// sw.js - Service Worker para Daya Nails 
 
-const CACHE_NAME = 'mknails--v1';
+const CACHE_NAME = 'daya-nails--v1';
 const urlsToCache = [
-  '/mknails-/',
-  '/mknails-/index.html',
-  '/mknails-/admin.html',
-  '/mknails-/admin-login.html',
-  '/mknails-/setup-wizard.html',
-  '/mknails-/editar-negocio.html',
-  '/mknails-/manifest.json',
-  '/mknails-/icons/icon-72x72.png',
-  '/mknails-/icons/icon-96x96.png',
-  '/mknails-/icons/icon-128x128.png',
-  '/mknails-/icons/icon-144x144.png',
-  '/mknails-/icons/icon-152x152.png',
-  '/mknails-/icons/icon-192x192.png',
-  '/mknails-/icons/icon-384x384.png',
-  '/mknails-/icons/icon-512x512.png'
+  '/daya-nails-/',
+  '/daya-nails-/index.html',
+  '/daya-nails-/admin.html',
+  '/daya-nails-/admin-login.html',
+  '/daya-nails-/setup-wizard.html',
+  '/daya-nails-/editar-negocio.html',
+  '/daya-nails-/manifest.json',
+  '/daya-nails-/icons/icon-72x72.png',
+  '/daya-nails-/icons/icon-96x96.png',
+  '/daya-nails-/icons/icon-128x128.png',
+  '/daya-nails-/icons/icon-144x144.png',
+  '/daya-nails-/icons/icon-152x152.png',
+  '/daya-nails-/icons/icon-192x192.png',
+  '/daya-nails-/icons/icon-384x384.png',
+  '/daya-nails-/icons/icon-512x512.png'
 ];
 
 // ============================================
@@ -108,7 +108,7 @@ self.addEventListener('fetch', event => {
           }
           // Si no hay cache y es imagen, devolver icon por defecto
           if (event.request.url.match(/\.(jpg|jpeg|png|gif|svg|webp)$/)) {
-            return caches.match('/mknails-/icons/icon-192x192.png');
+            return caches.match('/daya-nails-/icons/icon-192x192.png');
           }
           return new Response('Error de red', { status: 408 });
         });
@@ -138,6 +138,6 @@ self.addEventListener('message', event => {
   }
 });
 
-console.log('✅ Service Worker configurado para Mknails ');
+console.log('✅ Service Worker configurado para Daya Nails ');
 console.log('📦 Cache:', CACHE_NAME);
 console.log('📄 Archivos a cachear:', urlsToCache.length);

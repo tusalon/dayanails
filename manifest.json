@@ -1,20 +1,20 @@
 {
-  "name": "Mknails ",
-  "short_name": "Mknails",
+  "name": "Daya Nails ",
+  "short_name": "Daya",
   "description": "Uñas y belleza - Tu espacio de cuidado personal",
-  "start_url": "/mknails-/",
-  "scope": "/mknails-/",
+  "start_url": "/daya-nails-/",
+  "scope": "/daya-nails-/",
   "display": "standalone",
   "background_color": "#ec4899",
   "theme_color": "#ec4899",
   "icons": [
     {
-      "src": "/mknails-/icons/icon-192x192.png",
+      "src": "/daya-nails-/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/mknails-/icons/icon-512x512.png",
+      "src": "/daya-nails-/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
