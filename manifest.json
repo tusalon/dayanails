@@ -1,0 +1,22 @@
+{
+  "name": "Mknails ",
+  "short_name": "Mknails",
+  "description": "Uñas y belleza - Tu espacio de cuidado personal",
+  "start_url": "/mknails-/",
+  "scope": "/mknails-/",
+  "display": "standalone",
+  "background_color": "#ec4899",
+  "theme_color": "#ec4899",
+  "icons": [
+    {
+      "src": "/mknails-/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/mknails-/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
