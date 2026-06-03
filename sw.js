@@ -1,6 +1,6 @@
 // sw.js - Service Worker para Daya Nails 
 
-const CACHE_NAME = 'daya-nails--v47';
+const CACHE_NAME = 'daya-nails--v49';
 const urlsToCache = [
   '/daya-nails-/',
   '/daya-nails-/index.html',
@@ -24,7 +24,9 @@ const urlsToCache = [
   '/daya-nails-/vendor/bcrypt.min.js',
   '/daya-nails-/vendor/tailwind-browser.js',
   '/daya-nails-/vendor/lucide/lucide.css',
-  '/daya-nails-/vendor/lucide/lucide.woff2'
+  '/daya-nails-/vendor/lucide/lucide.woff2',
+  '/daya-nails-/utils/push-config.js',
+  '/daya-nails-/utils/push-notifications.js'
 ];
 
 // ============================================
@@ -144,6 +146,51 @@ self.addEventListener('message', event => {
       });
     });
   }
+});
+
+// ============================================
+// WEB PUSH OPCIONAL
+// ============================================
+self.addEventListener('push', event => {
+  let payload = {};
+
+  try {
+    payload = event.data ? event.data.json() : {};
+  } catch (error) {
+    payload = {
+      title: 'RservasRoma',
+      body: event.data ? event.data.text() : 'Tienes una nueva notificación'
+    };
+  }
+
+  const title = payload.title || 'RservasRoma';
+  const options = {
+    body: payload.body || 'Tienes una nueva notificación',
+    icon: '/daya-nails-/icons/icon-192x192.png',
+    badge: '/daya-nails-/icons/icon-96x96.png',
+    tag: payload.tag || 'rservasroma',
+    data: {
+      url: payload.url || '/daya-nails-/admin.html',
+      ...(payload.data || {})
+    }
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+
+  const targetUrl = event.notification?.data?.url || '/daya-nails-/admin.html';
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
+      for (const client of clientList) {
+        if (client.url.includes(targetUrl) && 'focus' in client) return client.focus();
+      }
+      if (clients.openWindow) return clients.openWindow(targetUrl);
+      return null;
+    })
+  );
 });
 
 console.log('✅ Service Worker configurado para Daya Nails ');
